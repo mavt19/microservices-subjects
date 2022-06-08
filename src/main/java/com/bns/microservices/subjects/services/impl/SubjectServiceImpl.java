@@ -1,0 +1,55 @@
+package com.bns.microservices.subjects.services.impl;
+
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.bns.microservices.subjects.models.entity.Subject;
+import com.bns.microservices.subjects.models.repository.SubjectRepository;
+import com.bns.microservices.subjects.services.SubjectService;
+
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class SubjectServiceImpl implements SubjectService{
+
+	private final SubjectRepository subjectRepository;
+	
+	@Override
+	@Transactional(readOnly = true)
+	public Iterable<Subject> findAll() {
+		// TODO Auto-generated method stub
+		return subjectRepository.findAll();
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Optional<Subject> finById(Long id) {
+		// TODO Auto-generated method stub
+		return subjectRepository.findById(id);
+	}
+
+	@Override
+	@Transactional
+	public Subject save(Subject subject) {
+		// TODO Auto-generated method stub
+		return subjectRepository.save(subject);
+	}
+
+	@Override
+	@Transactional
+	public void deleteById(Long id) {
+		// TODO Auto-generated method stub
+		subjectRepository.deleteById(id);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Subject findSubjectByStudetId(Long id) {
+		// TODO Auto-generated method stub
+		return subjectRepository.findSubjectByStudetId(id);
+	}
+
+}

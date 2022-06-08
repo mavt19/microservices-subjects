@@ -1,0 +1,29 @@
+server:
+  port: ${PORT:0}    
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.value}  
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+      
+spring:
+  application:
+    name: microservices-subjects
+      
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_microservices
+    username: root
+    password: sa
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDB103Dialect
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+    
+logging:
+  level:
+    org:
+      hibernate:
+        type: debug        
