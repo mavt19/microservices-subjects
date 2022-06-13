@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -25,11 +27,12 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+	@NotEmpty
 	private String name;
-	
+	@NotEmpty
 	private String lastname;
-	
+	@NotEmpty
+	@Email
 	private String email;
 	
 	@CreationTimestamp

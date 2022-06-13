@@ -2,6 +2,8 @@ package com.bns.microservices.subjects.services.impl;
 
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -50,6 +52,12 @@ public class SubjectServiceImpl implements SubjectService{
 	public Subject findSubjectByStudetId(Long id) {
 		// TODO Auto-generated method stub
 		return subjectRepository.findSubjectByStudetId(id);
+	}
+
+	@Override
+	public Page<Subject> findAll(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return subjectRepository.findAll(pageable);
 	}
 
 }
