@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -43,4 +44,6 @@ public class Exam {
 	@JsonIgnoreProperties(value = {"exam"}, allowSetters = true)
 	private List<Question> questions = new ArrayList<>();
 
+	@Transient
+	private boolean answered;
 }

@@ -124,6 +124,15 @@ public class SubjectController {
 		if (subject == null) {
 			return ResponseEntity.notFound().build();
 		}
+		List<Long> examensId = (List<Long>) subjectService.getAnswerIdWithAnswersByStudent(id);
+		List<Exam> exams = subject.getExams().stream().map(exam ->{
+			if(examensId != null && examensId.contains(exam.getId())) {
+				exam.setAnswered(true);
+			}
+			return exam;
+		})
+				.toList();
+		subject.setExams(exams);
 		return ResponseEntity.ok().body(subject);
 	}
 	
@@ -168,4 +177,5 @@ public class SubjectController {
 		});
 		return ResponseEntity.badRequest().body(errors);
 	}
+	
 }

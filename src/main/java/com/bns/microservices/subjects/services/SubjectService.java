@@ -20,4 +20,6 @@ public interface SubjectService {
 	public void deleteById(Long id);
 	
 	public Subject findSubjectByStudetId(Long id);
+	
+	public Iterable<Long> getAnswerIdWithAnswersByStudent(Long studentId);
 }
