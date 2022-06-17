@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.bns.microservices.subjects.clients.AwnserFeignClient;
 import com.bns.microservices.subjects.models.entity.Subject;
 import com.bns.microservices.subjects.models.repository.SubjectRepository;
 import com.bns.microservices.subjects.services.SubjectService;
@@ -18,6 +19,8 @@ import lombok.AllArgsConstructor;
 public class SubjectServiceImpl implements SubjectService{
 
 	private final SubjectRepository subjectRepository;
+	
+	private final AwnserFeignClient awnserFeignClient;
 	
 	@Override
 	@Transactional(readOnly = true)
@@ -58,6 +61,12 @@ public class SubjectServiceImpl implements SubjectService{
 	public Page<Subject> findAll(Pageable pageable) {
 		// TODO Auto-generated method stub
 		return subjectRepository.findAll(pageable);
+	}
+
+	@Override
+	public Iterable<Long> getAnswerIdWithAnswersByStudent(Long studentId) {
+		// TODO Auto-generated method stub
+		return awnserFeignClient.getAnswerIdWithAnswersByStudent(studentId);
 	}
 
 }

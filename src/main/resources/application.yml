@@ -10,7 +10,11 @@ eureka:
 spring:
   application:
     name: microservices-subjects
-      
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+              
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/db_microservices
@@ -26,4 +30,8 @@ logging:
   level:
     org:
       hibernate:
-        type: debug        
+        type: debug    
+        
+config:
+  balancer:
+    test : ${TEST_BALANCER:default}            
